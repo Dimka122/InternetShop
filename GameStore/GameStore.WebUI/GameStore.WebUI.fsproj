@@ -12,6 +12,18 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.21" />
+    <PackageReference Include="Moq" Version="4.1.1309.1617" />
+    <PackageReference Include="Ninject" Version="3.0.1.10" />
+    <PackageReference Include="Ninject.MVC3" Version="3.0.0.6" />
+    <PackageReference Include="Ninject.Web.Common" Version="3.0.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GameStore.Domain\GameStore.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="infrastructure\NinjectDependencyResolver.cs" />
   </ItemGroup>
 
 </Project>
