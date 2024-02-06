@@ -12,7 +12,9 @@ namespace Korzina_magazina.Migrations
 {
     [DbContext(typeof(ProductContext))]
     [Migration("20240205112613_initiale")]
+#pragma warning disable CS8981 // Имя типа содержит только строчные символы ASCII. Такие имена могут резервироваться для языка.
     partial class initiale
+#pragma warning restore CS8981 // Имя типа содержит только строчные символы ASCII. Такие имена могут резервироваться для языка.
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

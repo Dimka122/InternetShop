@@ -39,7 +39,9 @@ namespace Korzina_magazina
 
         private void UpdateCartInSession()
         {
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             _httpContextAccessor.HttpContext.Session.SetString("Cart", JsonConvert.SerializeObject(_cart));
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
         }
         public void AddToCart(string productId, int quantity)
         {
@@ -60,16 +62,22 @@ namespace Korzina_magazina
         private void SaveCartToSession(Cart cart)
         {
             var cartJson = JsonConvert.SerializeObject(cart);
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             _httpContextAccessor.HttpContext.Session.SetString("Cart", cartJson);
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
         }
 
         private Cart GetCartFromSession()
         {
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             var cartJson = _httpContextAccessor.HttpContext.Session.GetString("Cart");
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
 
             if (!string.IsNullOrEmpty(cartJson))
             {
+#pragma warning disable CS8603 // Возможно, возврат ссылки, допускающей значение NULL.
                 return JsonConvert.DeserializeObject<Cart>(cartJson);
+#pragma warning restore CS8603 // Возможно, возврат ссылки, допускающей значение NULL.
             }
 
             var cart = new Cart();
@@ -91,7 +99,9 @@ namespace Korzina_magazina
         }
         public void ClearCart()
         {
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             _httpContextAccessor.HttpContext.Session.Remove("Cart");
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
         }
 
 

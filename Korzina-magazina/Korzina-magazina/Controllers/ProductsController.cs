@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Korzina_magazina.Data;
@@ -12,6 +8,7 @@ namespace Korzina_magazina.Controllers
 {
     public class ProductsController : Controller
     {
+
         private readonly ProductContext _context;
         private readonly CartService _cartService;
 
@@ -22,15 +19,9 @@ namespace Korzina_magazina.Controllers
         }
 
         // GET: Products
+#pragma warning disable CS1998 // В асинхронном методе отсутствуют операторы await, будет выполнен синхронный метод
         public async Task<IActionResult> Index()
-        {
-              return _context.Products != null ? 
-                          View(await _context.Products.ToListAsync()) :
-                          Problem("Entity set 'ProductContext.Products'  is null.");
-        }
-
-        // GET: Products/Details/5
-        public async Task<IActionResult> Details(string id)
+#pragma warning restore CS1998 // В асинхронном методе отсутствуют операторы await, будет выполнен синхронный метод
         {
             var products = _context.Products.ToList();
 
@@ -46,7 +37,5 @@ namespace Korzina_magazina.Controllers
 
             return View(products);
         }
-
-        
     }
 }

@@ -25,7 +25,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Photo)
                 </th>
-                <th></th>
+                <th>
+                    
+                </th>
             </tr>
         </thead>
         @foreach (var product in Model)
@@ -35,6 +37,11 @@
                 <td>@product.Name</td>
                 <td>@(Math.Round(product.Price, 2))</td>
                 <td><img src="~/images/@product.Photo" width="60" /> </td>
+
+                <td>
+                    <input type="number" min="1" value="@product.Quantity" id="quantity-@product.Id" />
+                </td>
+
                 <td align="center">
                     <button class="add-to-cart" data-product-id="@product.Id">
                         Add to Cart
@@ -44,3 +51,10 @@
         }
     </table>
 </body>
+<form asp-controller="Cart" asp-action="Index" method="get">
+    <button type="submit" class="btn btn-primary">Show Cart</button>
+</form>
+
+@section Scripts {
+    <script src="~/js/cart.js"></script>
+}
