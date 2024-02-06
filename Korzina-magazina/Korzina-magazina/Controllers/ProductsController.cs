@@ -2,13 +2,15 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Korzina_magazina.Data;
-using Korzina_magazina.Models;
+using Korzina_magazina;
+using System.Threading.Tasks;
+using System.Linq;
 
-namespace Korzina_magazina.Controllers
+
+namespace ECommerceShoppingCartAppASPNET7.Controllers
 {
     public class ProductsController : Controller
     {
-
         private readonly ProductContext _context;
         private readonly CartService _cartService;
 
@@ -19,9 +21,8 @@ namespace Korzina_magazina.Controllers
         }
 
         // GET: Products
-#pragma warning disable CS1998 // В асинхронном методе отсутствуют операторы await, будет выполнен синхронный метод
+
         public async Task<IActionResult> Index()
-#pragma warning restore CS1998 // В асинхронном методе отсутствуют операторы await, будет выполнен синхронный метод
         {
             var products = _context.Products.ToList();
 
@@ -38,4 +39,5 @@ namespace Korzina_magazina.Controllers
             return View(products);
         }
     }
+
 }
